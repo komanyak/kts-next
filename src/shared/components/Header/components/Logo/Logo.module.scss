@@ -1,0 +1,53 @@
+.logo {
+  @include flex-center;
+  gap: $space-xs;
+  position: absolute;
+  left: $space-l;
+  
+  @include respond(md) {
+    left: $space-m;
+  }
+  
+  @include respond(sm) {
+    left: $space-s;
+    gap: $space-xxs;
+  }
+  
+  @include respond(xs) {
+    left: 8px;
+    gap: 3px;
+  }
+}
+
+.logoIcon {
+  width: 42px;
+  height: 42px;
+  @include flex-center;
+  
+  @include respond(sm) {
+    width: 32px;
+    height: 32px;
+  }
+  
+  @include respond(xs) {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  color: $text-primary;
+  
+  @include respond(sm) {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  
+  @include respond(xs) {
+    font-size: 7px;
+    line-height: 10px;
+  }
+}

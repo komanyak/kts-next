@@ -1,0 +1,29 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  display: block;
+  animation: spin 1s linear infinite;
+  fill: $loader-bg;
+}
+
+.loaderS {
+  width: 24px;
+  height: 24px;
+}
+
+.loaderM {
+  width: 48px;
+  height: 48px;
+}
+
+.loaderL {
+  width: 60px;
+  height: 60px;
+}
