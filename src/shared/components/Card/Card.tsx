@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import Image from 'next/image';
 import React from 'react';
 
 import Text from '../Text';
@@ -38,7 +39,13 @@ const Card: React.FC<CardProps> = ({
     <div className={classNames(styles.card, className)} onClick={onClick}>
       {/* Изображение */}
       <div className={styles.cardImage}>
-        <img src={image} alt="card" />
+        <Image 
+          src={image} 
+          alt="card"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
+          style={{ objectFit: 'cover' }}
+        />
       </div>
 
       {/* Контент карточки */}

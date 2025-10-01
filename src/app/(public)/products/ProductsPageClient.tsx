@@ -4,38 +4,40 @@ import Pagination from '@components/Pagination';
 import ProductsGrid from '@components/ProductsGrid';
 import TotalSection from '@components/TotalSection';
 import { observer } from 'mobx-react-lite';
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { ProductsStore } from '@stores/ProductsStore';
 import { useCartStore } from '@stores/StoreContext';
 import { getProductImageUrl, formatPrice } from '@utils/productUtils';
-import type { Product } from '@api/types';
+import type { CategoryOption } from '@api/server';
 
 import ErrorState from './components/ErrorState';
 import SearchSection from './components/SearchSection';
 
 interface ProductsPageClientProps {
-  initialProducts: Product[];
+  categories: CategoryOption[];
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-const ProductsPageClient: React.FC<ProductsPageClientProps> = observer(({ initialProducts, searchParams }) => {
+const ProductsPageClient: React.FC<ProductsPageClientProps> = observer(({ categories, searchParams }) => {
   const productsStore = useMemo(() => new ProductsStore(), []);
   const cartStore = useCartStore();
   const router = useRouter();
+  const isInitialized = useRef(false);
 
   useEffect(() => {
     productsStore.setNavigate((url: string) => {
       router.push(url);
     });
+    productsStore.allCategories = categories;
+  }, [productsStore, router, categories]);
 
-   
-    productsStore.products = initialProducts;
+  useEffect(() => {
+    if (isInitialized.current) return;
     
-    const loadCategories = async () => {
-      await productsStore.fetchAllCategories();
-
-  
+    isInitialized.current = true;
+    
+    const initializeStore = async () => {
       const urlSearchParams = new URLSearchParams();
       Object.entries(searchParams).forEach(([key, value]) => {
         if (value) {
@@ -44,10 +46,14 @@ const ProductsPageClient: React.FC<ProductsPageClientProps> = observer(({ initia
       });
 
       productsStore.initializeFromURL(urlSearchParams);
+      
+      if (!searchParams.search && !searchParams.filters) {
+        await productsStore.fetchProducts();
+      }
     };
 
-    loadCategories();
-  }, [productsStore, searchParams, router, initialProducts]);
+    initializeStore();
+  }, []);
 
   if (productsStore.error) {
     return <ErrorState error={productsStore.error} />;

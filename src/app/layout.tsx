@@ -10,13 +10,13 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'Lalasia - Furniture Store',
-  description: 'Discover beautiful furniture and home decor at Lalasia. Quality products for your home.',
-  keywords: 'furniture, home decor, chairs, tables, modern furniture',
+  title: 'Lalasia - Online Store',
+  description: 'Discover a wide range of products at Lalasia. From furniture and electronics to shoes and more - quality products for your lifestyle.',
+  keywords: 'online store, furniture, electronics, shoes, home decor, appliances, shopping',
   authors: [{ name: 'Lalasia Team' }],
   openGraph: {
-    title: 'Lalasia - Furniture Store',
-    description: 'Discover beautiful furniture and home decor at Lalasia.',
+    title: 'Lalasia - Online Store',
+    description: 'Discover a wide range of products at Lalasia. Quality products for your lifestyle.',
     type: 'website',
     locale: 'en_US',
   },

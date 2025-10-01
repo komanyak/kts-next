@@ -1,0 +1,46 @@
+@use '@styles/variables.scss' as *;
+@use '@styles/mixins.scss' as *;
+
+.categoriesPage {
+  min-height: 100vh;
+  background-color: $page-bg;
+  padding: $space-xl 0;
+}
+
+.container {
+  @include container;
+  @include flex-center;
+  flex-direction: column;
+  gap: $space-l;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  color: $text-primary;
+  margin: 0;
+  
+  @include respond(sm) {
+    font-size: 24px;
+  }
+  
+  @include respond(xs) {
+    font-size: 20px;
+  }
+}
+
+.description {
+  font-size: 18px;
+  color: $text-secondary;
+  text-align: center;
+  margin: 0;
+  
+  @include respond(sm) {
+    font-size: 16px;
+  }
+  
+  @include respond(xs) {
+    font-size: 14px;
+  }
+}
+

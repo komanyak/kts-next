@@ -22,6 +22,7 @@ export class ProductsStore {
   currentPage = 1;
   itemsPerPage = 9;
   private navigate?: (url: string) => void;
+  private fetchPromise: Promise<void> | null = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -108,24 +109,34 @@ export class ProductsStore {
   }
 
   async fetchProducts(searchQuery?: string, categoryIds?: string[]): Promise<void> {
-    try {
-      runInAction(() => {
-        this.loading = true;
-        this.error = null;
-      });
-
-      const response = await productsApi.getProducts(searchQuery, categoryIds);
-
-      runInAction(() => {
-        this.products = response.data;
-        this.loading = false;
-      });
-    } catch {
-      runInAction(() => {
-        this.error = 'Ошибка при загрузке товаров';
-        this.loading = false;
-      });
+    if (this.fetchPromise) {
+      return this.fetchPromise;
     }
+
+    this.fetchPromise = (async () => {
+      try {
+        runInAction(() => {
+          this.loading = true;
+          this.error = null;
+        });
+
+        const response = await productsApi.getProducts(searchQuery, categoryIds);
+
+        runInAction(() => {
+          this.products = response.data;
+          this.loading = false;
+        });
+      } catch {
+        runInAction(() => {
+          this.error = 'Ошибка при загрузке товаров';
+          this.loading = false;
+        });
+      } finally {
+        this.fetchPromise = null;
+      }
+    })();
+
+    return this.fetchPromise;
   }
 
   async fetchAllCategories(): Promise<void> {

@@ -3,7 +3,7 @@
 import BagIcon from '@icons/BagIcon';
 import UserIcon from '@icons/UserIcon';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@stores/StoreContext';
 
@@ -12,6 +12,11 @@ import styles from './HeaderActions.module.scss';
 const HeaderActions: React.FC = observer(() => {
   const router = useRouter();
   const cartStore = useCartStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleCartClick = () => {
     router.push('/cart');
@@ -21,7 +26,7 @@ const HeaderActions: React.FC = observer(() => {
     <div className={styles.icons}>
       <button className={styles.iconButton} aria-label="Shopping bag" onClick={handleCartClick}>
         <BagIcon />
-        {cartStore.totalItems > 0 && (
+        {mounted && cartStore.totalItems > 0 && (
           <span className={styles.cartBadge}>{cartStore.totalItems}</span>
         )}
       </button>

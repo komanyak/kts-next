@@ -1,9 +1,13 @@
 import qs from 'qs';
 import type { ProductsResponse, ProductResponse } from './types';
 
-const BASE_URL = 'https://front-school-strapi.ktsdev.ru/api';
-const JWT_TOKEN =
-  'f53a84efed5478ffc79d455646b865298d6531cf8428a5e3157fa5572c6d3c51739cdaf3a28a4fdf8b83231163075ef6a8435a774867d035af53717fecd37bca814c6b7938f02d2893643e2c1b6a2f79b3ca715222895e8ee9374c0403d44081e135cda1f811fe7cfec6454746a5657ba070ec8456462f8ca0e881232335d1ef';
+
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://front-school-strapi.ktsdev.ru/api';
+const JWT_TOKEN = process.env.API_JWT_TOKEN;
+
+if (!JWT_TOKEN) {
+  throw new Error('API_JWT_TOKEN is not defined in environment variables');
+}
 
 type QueryParams = {
   populate: string[];
@@ -21,7 +25,52 @@ type QueryParams = {
 };
 
 
+export type CategoryOption = {
+  documentId: string;
+  title: string;
+};
+
 export const serverProductsApi = {
+
+  async getAllCategories(): Promise<CategoryOption[]> {
+    const response = await fetch(`${BASE_URL}/products?populate=productCategory`, {
+      headers: {
+        Authorization: `Bearer ${JWT_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+      next: { 
+        revalidate: 3600, 
+        tags: ['categories'] 
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch categories');
+    }
+
+    const data: ProductsResponse = await response.json();
+    
+ 
+    const categories = data.data
+      .map((product) => product.productCategory)
+      .filter((category): category is NonNullable<typeof category> => category != null)
+      .reduce(
+        (acc, category) => {
+          if (!acc.find((cat) => cat.documentId === category.documentId)) {
+            acc.push({
+              documentId: category.documentId,
+              title: category.title,
+            });
+          }
+          return acc;
+        },
+        [] as CategoryOption[]
+      );
+
+    return categories;
+  },
+
+  
   async getProducts(searchQuery?: string, categoryIds?: string[]): Promise<ProductsResponse> {
     const queryParams: QueryParams = {
       populate: ['images', 'productCategory'],
@@ -57,13 +106,14 @@ export const serverProductsApi = {
       arrayFormat: 'brackets',
     });
 
-    // Используем Next.js fetch без кеширования для динамических данных
+
     const response = await fetch(`${BASE_URL}/products?${query}`, {
       headers: {
         Authorization: `Bearer ${JWT_TOKEN}`,
         'Content-Type': 'application/json',
       },
-      cache: 'no-store', // Отключаем кеширование для динамических данных
+      cache: 'no-store', 
+      next: { tags: ['products'] } 
     });
 
     if (!response.ok) {
@@ -73,18 +123,21 @@ export const serverProductsApi = {
     return response.json();
   },
 
+ 
   async getProduct(documentId: string): Promise<ProductResponse> {
     const query = qs.stringify({
       populate: ['images', 'productCategory'],
     });
 
-    // Используем Next.js fetch с кешированием
     const response = await fetch(`${BASE_URL}/products/${documentId}?${query}`, {
       headers: {
         Authorization: `Bearer ${JWT_TOKEN}`,
         'Content-Type': 'application/json',
       },
-      next: { revalidate: 600 }, // Кешируем на 10 минут
+      next: { 
+        revalidate: 600, 
+        tags: ['products', `product-${documentId}`] 
+      },
     });
 
     if (!response.ok) {

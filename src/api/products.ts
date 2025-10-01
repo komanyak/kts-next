@@ -2,9 +2,13 @@ import qs from 'qs';
 
 import type { ProductsResponse, ProductResponse } from './types';
 
-const BASE_URL = 'https://front-school-strapi.ktsdev.ru/api';
-const JWT_TOKEN =
-  'f53a84efed5478ffc79d455646b865298d6531cf8428a5e3157fa5572c6d3c51739cdaf3a28a4fdf8b83231163075ef6a8435a774867d035af53717fecd37bca814c6b7938f02d2893643e2c1b6a2f79b3ca715222895e8ee9374c0403d44081e135cda1f811fe7cfec6454746a5657ba070ec8456462f8ca0e881232335d1ef';
+
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://front-school-strapi.ktsdev.ru/api';
+const JWT_TOKEN = process.env.NEXT_PUBLIC_API_JWT_TOKEN;
+
+if (!JWT_TOKEN) {
+  console.error('NEXT_PUBLIC_API_JWT_TOKEN is not defined in environment variables');
+}
 
 type QueryParams = {
   populate: string[];
@@ -21,10 +25,7 @@ type QueryParams = {
   };
 };
 
-/**
- * API для работы с продуктами на клиенте
- * Использует fetch вместо axios
- */
+
 export const productsApi = {
   async getProducts(searchQuery?: string, categoryIds?: string[]): Promise<ProductsResponse> {
     const queryParams: QueryParams = {
@@ -66,7 +67,7 @@ export const productsApi = {
         Authorization: `Bearer ${JWT_TOKEN}`,
         'Content-Type': 'application/json',
       },
-      // Для клиентских запросов не используем кеширование
+
       cache: 'no-store',
     });
 
@@ -87,7 +88,7 @@ export const productsApi = {
         Authorization: `Bearer ${JWT_TOKEN}`,
         'Content-Type': 'application/json',
       },
-      // Для клиентских запросов не используем кеширование
+
       cache: 'no-store',
     });
 

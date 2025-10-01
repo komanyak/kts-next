@@ -5,6 +5,7 @@ import Button from '@components/Button';
 import Text from '@components/Text';
 import ArrowLeftIcon from '@icons/ArrowLeftIcon';
 import ArrowRightIcon from '@icons/ArrowRightIcon';
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { useCartStore } from '@stores/StoreContext';
 import { getImageUrl, formatPrice } from '@utils/productUtils';
@@ -35,7 +36,14 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     <div className={styles.productDetails}>
       <div className={styles.imageContainer}>
         <div className={styles.mainImage}>
-          <img src={getImageUrl(product.images, currentImageIndex, 'large')} alt={product.title} />
+          <Image 
+            src={getImageUrl(product.images, currentImageIndex, 'large')} 
+            alt={product.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+            style={{ objectFit: 'cover' }}
+            priority
+          />
         </div>
         {product.images.length > 1 && (
           <div className={styles.navigationArrows}>
