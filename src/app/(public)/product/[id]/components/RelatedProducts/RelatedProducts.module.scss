@@ -65,6 +65,15 @@
   }
 }
 
+.productCard {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
 .addToCartButton {
   width: 100%;
 }

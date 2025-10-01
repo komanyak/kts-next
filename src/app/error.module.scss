@@ -1,0 +1,68 @@
+@use '@styles/variables.scss' as *;
+@use '@styles/mixins.scss' as *;
+
+.error {
+  min-height: 100vh;
+  background-color: $page-bg;
+  padding: $space-xl * 4 $space-l;
+  
+  @include respond(sm) {
+    padding: $space-xl * 3 $space-m;
+  }
+}
+
+.container {
+  @include container;
+  @include flex-center;
+  flex-direction: column;
+  gap: $space-l;
+  text-align: center;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+  
+  @include respond(sm) {
+    font-size: 36px;
+  }
+  
+  @include respond(xs) {
+    font-size: 28px;
+  }
+}
+
+.description {
+  font-size: 18px;
+  color: $text-secondary;
+  margin: 0;
+  
+  @include respond(sm) {
+    font-size: 16px;
+  }
+}
+
+.button {
+  display: inline-block;
+  margin-top: $space-l;
+  padding: $space-m $space-xl;
+  background-color: $brand;
+  color: $button-primary-text;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  
+  &:hover {
+    background-color: $brand-hover;
+  }
+  
+  &:active {
+    background-color: $brand-active;
+  }
+}
+

@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { ProductStore } from '@stores/ProductStore';
+import { useCartStore } from '@stores/StoreContext';
 import type { Product } from '@api/types';
 
 import styles from './ProductPage.module.scss';
@@ -20,6 +21,7 @@ interface ProductPageClientProps {
 const ProductPageClient: React.FC<ProductPageClientProps> = observer(({ product, relatedProducts }) => {
   const router = useRouter();
   const productStore = useMemo(() => new ProductStore(), []);
+  const cartStore = useCartStore();
 
   useEffect(() => {
     productStore.product = product;
@@ -28,6 +30,10 @@ const ProductPageClient: React.FC<ProductPageClientProps> = observer(({ product,
 
   const handleBackClick = () => {
     router.push('/products');
+  };
+
+  const handleAddToCart = (product: Product) => {
+    cartStore.addToCart(product);
   };
 
   return (
@@ -39,7 +45,7 @@ const ProductPageClient: React.FC<ProductPageClientProps> = observer(({ product,
 
       <ProductDetails product={product} />
 
-      <RelatedProducts products={relatedProducts} />
+      <RelatedProducts products={relatedProducts} onAddToCart={handleAddToCart} />
     </div>
   );
 });

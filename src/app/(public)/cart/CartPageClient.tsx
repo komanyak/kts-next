@@ -1,6 +1,7 @@
 'use client';
 
 import ProductsGrid from '@components/ProductsGrid';
+import Text from '@components/Text';
 import TotalSection from '@components/TotalSection';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
@@ -22,7 +23,9 @@ const CartPageClient: React.FC = observer(() => {
     return (
       <div className={styles.cartPage}>
         <div className={styles.errorState}>
-          <p>{cartStore.error}</p>
+          <Text view="p-18" color="secondary">
+            {cartStore.error}
+          </Text>
         </div>
       </div>
     );

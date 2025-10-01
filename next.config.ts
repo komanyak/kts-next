@@ -9,7 +9,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'front-school.minio.ktsdev.ru',
+        pathname: '/**',
       },
     ],
   },

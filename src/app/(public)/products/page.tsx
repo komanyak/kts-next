@@ -1,14 +1,16 @@
-import { Suspense } from 'react';
+import { serverProductsApi } from '@api/server';
 import HeroSection from './components/HeroSection';
-import ProductsContent from './components/ProductsContent';
-import ProductsLoadingFallback from './components/ProductsLoadingFallback';
+import ProductsPageClient from './ProductsPageClient';
 
 import styles from './ProductsPage.module.scss';
 
 export const metadata = {
   title: 'Products - Lalasia',
-  description: 'Browse our collection of beautiful furniture and home decor products.',
+  description: 'Browse our wide selection of products - furniture, electronics, shoes, and more. Find everything you need in one place.',
 };
+
+
+let cachedCategories: Awaited<ReturnType<typeof serverProductsApi.getAllCategories>> | null = null;
 
 export default async function ProductsPage({
   searchParams,
@@ -17,13 +19,19 @@ export default async function ProductsPage({
 }) {
   const resolvedSearchParams = await searchParams;
   
+
+  if (!cachedCategories) {
+    cachedCategories = await serverProductsApi.getAllCategories();
+  }
+  
   return (
     <div className={styles.productsPage}>
       <HeroSection />
       
-      <Suspense fallback={<ProductsLoadingFallback />}>
-        <ProductsContent searchParams={resolvedSearchParams} />
-      </Suspense>
+      <ProductsPageClient 
+        categories={cachedCategories} 
+        searchParams={resolvedSearchParams} 
+      />
     </div>
   );
 }
