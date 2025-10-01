@@ -21,7 +21,6 @@ const Pagination: React.FC<PaginationProps> = ({
   if (totalPages <= 1) {
     return null;
   }
-
   const getVisiblePages = (): (number | string)[] => {
     if (totalPages <= 4) {
       const pages: number[] = [];
@@ -72,7 +71,6 @@ const Pagination: React.FC<PaginationProps> = ({
           )}
         </React.Fragment>
       ))}
-
       <button
         className={styles.paginationButton}
         disabled={currentPage === totalPages}
