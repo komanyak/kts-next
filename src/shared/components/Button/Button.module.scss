@@ -1,3 +1,5 @@
+@use '@styles/variables.scss' as *;
+
 .btn {
   padding: $space-s $space-l;
   box-sizing: border-box;

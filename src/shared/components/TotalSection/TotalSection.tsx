@@ -1,4 +1,4 @@
-import Text from 'components/Text';
+import Text from '@components/Text';
 import React, { memo, useMemo } from 'react';
 
 import styles from './TotalSection.module.scss';

@@ -1,32 +1,34 @@
-import Text from 'components/Text';
-import { routes } from 'config/routes';
+"use client";
+
+import Text from '@components/Text';
 import React from 'react';
-import { Link, useLocation } from 'react-router';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import styles from './Navigation.module.scss';
 
 const Navigation: React.FC = () => {
-  const location = useLocation();
+  const pathname = usePathname();
 
   const isProductsActive = React.useMemo(
-    () => location.pathname === routes.products.mask || location.pathname === routes.main.mask,
-    [location.pathname]
+    () => pathname === '/products' || pathname === '/',
+    [pathname]
   );
 
   const isCategoriesActive = React.useMemo(
-    () => location.pathname === routes.categories.mask,
-    [location.pathname]
+    () => pathname === '/categories',
+    [pathname]
   );
 
   const isAboutActive = React.useMemo(
-    () => location.pathname === routes.about.mask,
-    [location.pathname]
+    () => pathname === '/about',
+    [pathname]
   );
 
   return (
     <nav className={styles.navigation}>
       <Link
-        to={routes.products.create()}
+        href="/products"
         className={`${styles.navLink} ${isProductsActive ? styles.navLinkActive : ''}`}
       >
         <Text view="p-18" color={isProductsActive ? 'accent' : 'primary'}>
@@ -34,7 +36,7 @@ const Navigation: React.FC = () => {
         </Text>
       </Link>
       <Link
-        to={routes.categories.create()}
+        href="/categories"
         className={`${styles.navLink} ${isCategoriesActive ? styles.navLinkActive : ''}`}
       >
         <Text view="p-18" color={isCategoriesActive ? 'accent' : 'primary'}>
@@ -42,7 +44,7 @@ const Navigation: React.FC = () => {
         </Text>
       </Link>
       <Link
-        to={routes.about.create()}
+        href="/about"
         className={`${styles.navLink} ${isAboutActive ? styles.navLinkActive : ''}`}
       >
         <Text view="p-18" color={isAboutActive ? 'accent' : 'primary'}>

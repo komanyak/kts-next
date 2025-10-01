@@ -1,0 +1,303 @@
+@use '@styles/variables.scss' as *;
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl * 2;
+  margin-bottom: $space-xl * 2;
+
+  @media (min-width: $breakpoint-sm) {
+    gap: $space-xl * 2.5;
+    margin-bottom: $space-xl * 2.5;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
+    gap: $space-xl * 2;
+    margin-bottom: $space-xl * 2;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  flex-shrink: 0;
+
+  @media (min-width: $breakpoint-sm) {
+    height: 400px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    width: 500px;
+    height: 500px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    width: 600px;
+    height: 600px;
+  }
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.navigationArrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 $space-xl;
+  transform: translateY(-50%);
+  pointer-events: none;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 0 $space-xl * 1.5;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 24px;
+  }
+}
+
+.arrowButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: $text-primary;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0px 4px 20px 0px rgba(175, 173, 181, 0.2);
+  transition: all 0.2s ease;
+  padding: 0;
+  min-width: 48px;
+  min-height: 48px;
+
+  @media (min-width: $breakpoint-sm) {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    min-height: 64px;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.arrowButtonSecondary {
+  opacity: 1;
+}
+
+
+.productInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl * 2;
+
+  @media (min-width: $breakpoint-sm) {
+    gap: $space-xl * 2.5;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    gap: $space-xl * 2;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    gap: 48px;
+  }
+}
+
+.productHeader {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
+
+  @media (min-width: $breakpoint-sm) {
+    gap: $space-xl * 1.2;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    gap: $space-xl;
+  }
+}
+
+
+.productTitle {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.09;
+  color: $text-primary;
+  margin: 0;
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: 32px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 36px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    font-size: 44px;
+  }
+}
+
+.productDescription {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  color: $text-secondary;
+  margin: 0;
+  max-width: 100%;
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: 18px;
+    max-width: 500px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 20px;
+    max-width: 600px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    max-width: 653px;
+  }
+}
+
+
+.productActions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl * 2;
+  padding-top: $space-xl * 1.5;
+
+  @media (min-width: $breakpoint-sm) {
+    gap: $space-xl * 2.5;
+    padding-top: $space-xl * 2;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    gap: $space-xl * 2;
+    padding-top: $space-xl * 2;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    gap: 48px;
+    padding-top: 32px;
+  }
+}
+
+.priceSection {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl * 2;
+
+  @media (min-width: $breakpoint-sm) {
+    gap: $space-xl * 2.5;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    gap: $space-xl * 2;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    gap: 48px;
+  }
+}
+
+.price {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.09;
+  color: $text-primary;
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: 32px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 36px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    font-size: 44px;
+  }
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xxs;
+
+  @media (min-width: $breakpoint-sm) {
+    flex-direction: row;
+    gap: $space-xxs;
+  }
+}
+
+.buyNowButton {
+  width: auto;
+}
+
+.addToCartButton {
+  background-color: transparent;
+  color: $text-primary;
+  border: 1px solid $text-secondary;
+  border-radius: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1;
+  padding: $space-m $space-xl;
+  height: auto;
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: 18px;
+    padding: 16px 32px;
+  }
+
+  &:hover {
+    border-color: $text-primary;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+

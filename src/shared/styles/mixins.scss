@@ -1,0 +1,71 @@
+@use 'variables.scss' as *;
+
+@mixin respond($breakpoint) {
+    @if $breakpoint ==xs {
+        @media (max-width: $breakpoint-xs) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==sm {
+        @media (max-width: $breakpoint-sm) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==md {
+        @media (max-width: $breakpoint-md) {
+            @content;
+        }
+    }
+
+    @if $breakpoint ==lg {
+        @media (max-width: $breakpoint-lg) {
+            @content;
+        }
+    }
+}
+
+
+@mixin container {
+    width: 100%;
+    max-width: $breakpoint-lg;
+    margin: 0 auto;
+    padding: 0 $space-l;
+
+    @include respond(md) {
+        padding: 0 $space-m;
+    }
+
+    @include respond(sm) {
+        padding: 0 $space-s;
+    }
+
+    @include respond(xs) {
+        padding: 0 $space-xs;
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

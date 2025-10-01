@@ -1,10 +1,11 @@
-import type { Product } from 'api/types';
-import Button from 'components/Button';
-import Card from 'components/Card';
-import ProductsGridSkeleton from 'components/ProductsGridSkeleton';
-import { routes } from 'config/routes';
+"use client";
+
+import type { Product } from '@api/types';
+import Button from '@components/Button';
+import Card from '@components/Card';
+import ProductsGridSkeleton from '@components/ProductsGridSkeleton';
 import React, { useCallback, memo } from 'react';
-import { useNavigate } from 'react-router';
+import { useRouter } from 'next/navigation';
 
 import styles from './ProductsGrid.module.scss';
 
@@ -29,17 +30,17 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({
   onProductClick,
   buttonText = 'Add to Cart',
 }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const handleProductClick = useCallback(
     (productId: string) => {
       if (onProductClick) {
         onProductClick(productId);
       } else {
-        navigate(routes.product.create(productId));
+        router.push(`/product/${productId}`);
       }
     },
-    [onProductClick, navigate]
+    [onProductClick, router]
   );
 
   const handleAddToCart = useCallback(
@@ -53,15 +54,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({
   );
 
   if (loading) {
-    return (
-      <div className={styles.productsGrid}>
-        {Array.from({ length: 9 }).map((_, index) => (
-          <div key={index} className={styles.productCard}>
-            <ProductsGridSkeleton />
-          </div>
-        ))}
-      </div>
-    );
+    return <ProductsGridSkeleton count={9} />;
   }
 
   return (

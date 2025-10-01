@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import Button from 'components/Button';
-import ArrowLeftIcon from 'components/icons/ArrowLeftIcon';
-import ArrowRightIcon from 'components/icons/ArrowRightIcon';
+import Button from '@components/Button';
+import ArrowLeftIcon from '@icons/ArrowLeftIcon';
+import ArrowRightIcon from '@icons/ArrowRightIcon';
 import React from 'react';
 
 import styles from './Pagination.module.scss';

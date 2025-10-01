@@ -1,4 +1,4 @@
-import CardSkeleton from 'components/CardSkeleton';
+import CardSkeleton from '@components/CardSkeleton';
 import React from 'react';
 
 import styles from './ProductsGridSkeleton.module.scss';

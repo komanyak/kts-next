@@ -1,10 +1,12 @@
+'use client';
+
 import classNames from 'classnames';
 import React, { useState, useRef, useEffect } from 'react';
 
 import Input from '../Input';
+import ArrowDownIcon from '@icons/ArrowDownIcon';
 
 import styles from './MultiDropdown.module.scss';
-import AfterSlot from './afterSlot.svg';
 
 export type Option = {
   key: string;
@@ -70,7 +72,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
           }
         }}
         disabled={disabled}
-        afterSlot={<img src={AfterSlot} alt="dropdown icon" />}
+        afterSlot={<ArrowDownIcon width={24} height={24} />}
         {...props}
       />
       {isOpen && !disabled && (

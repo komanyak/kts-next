@@ -1,0 +1,71 @@
+@use '@styles/variables.scss' as *;
+
+.relatedProducts {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl * 1.5;
+  margin-bottom: $space-xl * 2;
+
+  @media (min-width: $breakpoint-sm) {
+    gap: $space-xl * 2;
+    margin-bottom: $space-xl * 2.5;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    gap: $space-xl * 2;
+    margin-bottom: $space-xl * 2;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+}
+
+.title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.5;
+  color: $text-primary;
+  margin: 0;
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: 28px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 30px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    font-size: 32px;
+  }
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-xl;
+
+  @media (min-width: $breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $space-xl * 1.5;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: $space-xl * 1.8;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    display: flex;
+    justify-content: space-between;
+    gap: 29px;
+  }
+}
+
+.addToCartButton {
+  width: 100%;
+}
+

@@ -1,19 +1,20 @@
-import { routes } from 'config/routes';
-import BagIcon from 'icons/BagIcon';
-import UserIcon from 'icons/UserIcon';
+"use client";
+
+import BagIcon from '@icons/BagIcon';
+import UserIcon from '@icons/UserIcon';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
-import { useNavigate } from 'react-router';
-import { useCartStore } from 'stores/StoreContext';
+import { useRouter } from 'next/navigation';
+import { useCartStore } from '@stores/StoreContext';
 
 import styles from './HeaderActions.module.scss';
 
 const HeaderActions: React.FC = observer(() => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const cartStore = useCartStore();
 
   const handleCartClick = () => {
-    navigate(routes.cart.create());
+    router.push('/cart');
   };
 
   return (
