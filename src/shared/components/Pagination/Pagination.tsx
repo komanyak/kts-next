@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import Button from '@components/Button';
 import ArrowLeftIcon from '@icons/ArrowLeftIcon';
 import ArrowRightIcon from '@icons/ArrowRightIcon';
 import React from 'react';
@@ -62,14 +61,14 @@ const Pagination: React.FC<PaginationProps> = ({
           {typeof page === 'string' ? (
             <span className={styles.paginationDots}>{page}</span>
           ) : (
-            <Button
+            <button
               className={classNames(styles.paginationButton, {
                 [styles.paginationButtonActive]: page === currentPage,
               })}
               onClick={() => onPageChange(page)}
             >
               {page}
-            </Button>
+            </button>
           )}
         </React.Fragment>
       ))}
