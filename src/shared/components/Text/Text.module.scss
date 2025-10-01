@@ -1,0 +1,78 @@
+@use '@styles/variables.scss' as *;
+
+.text {
+  color: inherit;
+}
+
+.textTitle {
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 48px;
+  letter-spacing: 0%;
+}
+
+.textSubtitle {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 36px;
+  letter-spacing: 0%;
+}
+
+.textButton {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0%;
+}
+
+.textP20 {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0%;
+}
+
+.textP18 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0%;
+}
+
+.textP16 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+}
+
+.textP14 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0%;
+}
+
+.textWeightNormal {
+  font-weight: 400;
+}
+
+.textWeightMedium {
+  font-weight: 500;
+}
+
+.textWeightBold {
+  font-weight: 700;
+}
+
+.textColorPrimary {
+  color: $text-primary;
+}
+
+.textColorSecondary {
+  color: $text-secondary;
+}
+
+.textColorAccent {
+  color: $text-accent;
+}

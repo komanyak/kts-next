@@ -1,0 +1,60 @@
+.searchSection {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.searchRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  max-width: 1240px;
+}
+
+.searchInput {
+  flex: 1;
+  max-width: 1079px;
+}
+
+.searchButton {
+  flex-shrink: 0;
+}
+
+.filterDropdown {
+  width: 300px;
+}
+
+@media (max-width: 1024px) {
+  .searchRow {
+    gap: 12px;
+  }
+  
+  .searchInput {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchSection {
+    padding: 0 16px;
+  }
+  
+  .searchRow {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .filterDropdown {
+    width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  .searchSection {
+    padding: 0 8px;
+  }
+  
+  .searchRow {
+    gap: 12px;
+  }
+}

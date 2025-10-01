@@ -1,0 +1,46 @@
+@use '@styles/variables.scss' as *;
+
+.multiDropdown {
+  position: relative;
+  width: 100%;
+}
+
+.dropdownOptions {
+  position: absolute;
+  width: 100%;
+  background: $dropdown-options-bg;
+  border: 1px solid $brand;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  margin-top: $space-xxs;
+}
+
+.dropdownOption {
+  padding: $space-s $space-xs;
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: rgba(0, 0, 0, 1);
+  cursor: pointer;
+
+  &:hover {
+    color: $text-secondary;
+  }
+
+  &.selected {
+    color: $text-accent;
+  }
+}
+
+.selectedClosed {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: $input-text;
+}

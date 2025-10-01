@@ -1,0 +1,109 @@
+// цвета
+$page-bg: #FAFAFA;
+$loader-bg: #518581;
+$button-primary-bg: #518581;
+$button-primary-text: #fff;
+$button-primary-bg-hover: #86aaa7;
+$button-primary-text-hover: #fff;
+$button-primary-bg-disabled: #d9d9d9;
+$button-primary-text-disabled: #fff;
+$button-primary-bg-active: #487773;
+$button-primary-text-active: #fff;
+$text-primary: #000;
+$text-secondary: #afadb5;
+$text-accent: #518581;
+$input-text: #000;
+$input-bg: #fff;
+$input-placeholder: #afadb5;
+$input-border: #fff;
+$input-bg-focus: #fff;
+$input-border-focus: #518581;
+$input-text-focus: #000;
+$input-bg-disabled: #fff;
+$input-border-disabled: #fff;
+$input-text-disabled: rgba(0, 0, 0, 0.2);
+$checkbox-bg: #fff;
+$checkbox-border: #fff;
+$checkbox-bg-hover: #fff;
+$checkbox-border-hover: #518581;
+$checkbox-bg-disabled: rgba(255, 255, 255, 0.5);
+$checkbox-border-disabled: rgba(255, 255, 255, 0);
+$checkbox-check: #518581;
+$checkbox-check-hover: #518581;
+$checkbox-check-disabled: rgba(0, 0, 0, 0.2);
+$card-image-bg: #d9d9d9;
+$card-bg: #fff;
+$dropdown-options-bg: #fff;
+$brand: #518581;
+$brand-active: #487773;
+$brand-hover: #86aaa7;
+
+// отступы
+$space-xl: 24px;
+$space-l: 20px;
+$space-m: 16px;
+$space-s: 14px;
+$space-xs: 12px;
+$space-xxs: 8px;
+
+// контрольные точки для адаптивности
+$breakpoint-xs: 375px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1440px;
+
+
+$header-bg: #ffffff;
+$header-border: #f3f3f3;
+$logo-brown: #ad7e5c;
+$logo-light-green: #a6d8d1;
+
+:export {
+  loaderBg: $loader-bg;
+  buttonPrimaryBg: $button-primary-bg;
+  buttonPrimaryText: $button-primary-text;
+  buttonPrimaryBgHover: $button-primary-bg-hover;
+  buttonPrimaryTextHover: $button-primary-text-hover;
+  buttonPrimaryBgDisabled: $button-primary-bg-disabled;
+  buttonPrimaryTextDisabled: $button-primary-text-disabled;
+  buttonPrimaryBgActive: $button-primary-bg-active;
+  buttonPrimaryTextActive: $button-primary-text-active;
+  textPrimary: $text-primary;
+  textSecondary: $text-secondary;
+  textAccent: $text-accent;
+  inputText: $input-text;
+  inputBg: $input-bg;
+  inputPlaceholder: $input-placeholder;
+  inputBorder: $input-border;
+  inputBgFocus: $input-bg-focus;
+  inputBorderFocus: $input-border-focus;
+  inputTextFocus: $input-text-focus;
+  inputBgDisabled: $input-bg-disabled;
+  inputBorderDisabled: $input-border-disabled;
+  inputTextDisabled: $input-text-disabled;
+  checkboxBg: $checkbox-bg;
+  checkboxBorder: $checkbox-border;
+  checkboxBgHover: $checkbox-bg-hover;
+  checkboxBorderHover: $checkbox-border-hover;
+  checkboxBgDisabled: $checkbox-bg-disabled;
+  checkboxBorderDisabled: $checkbox-border-disabled;
+  checkboxCheck: $checkbox-check;
+  checkboxCheckHover: $checkbox-check-hover;
+  checkboxCheckDisabled: $checkbox-check-disabled;
+  cardImageBg: $card-image-bg;
+  cardBg: $card-bg;
+  dropdownOptionsBg: $dropdown-options-bg;
+  brand: $brand;
+  brandActive: $brand-active;
+  brandHover: $brand-hover;
+  spaceXl: $space-xl;
+  spaceL: $space-l;
+  spaceM: $space-m;
+  spaceS: $space-s;
+  spaceXs: $space-xs;
+  spaceXxs: $space-xxs;
+  headerBg: $header-bg;
+  headerBorder: $header-border;
+  logoBrown: $logo-brown;
+  logoLightGreen: $logo-light-green;
+}

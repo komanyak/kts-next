@@ -1,0 +1,125 @@
+@use '@styles/variables.scss' as *;
+
+.productPage {
+  min-height: 100vh;
+  background-color: $page-bg;
+  padding: 0 $space-xl;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 0 $space-xl * 2;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 $space-xl * 3;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 0 100px;
+  }
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: $space-xs;
+  margin: $space-xl * 2 0 $space-xl * 3 0;
+  cursor: pointer;
+  color: $text-primary;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.2;
+  transition: opacity 0.2s ease;
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: 20px;
+    gap: $space-xs;
+    margin: $space-xl * 2.5 0 $space-xl * 3.5 0;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    margin: $space-xl * 2.5 0 $space-xl * 4 0;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    margin: 60px 0 80px 0;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  svg {
+    color: $text-primary;
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  font-size: 16px;
+  color: $text-secondary;
+
+  @media (min-width: $breakpoint-sm) {
+    min-height: 350px;
+    font-size: 18px;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    min-height: 400px;
+  }
+}
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+  gap: $space-m;
+  padding: 0 $space-m;
+
+  @media (min-width: $breakpoint-sm) {
+    min-height: 350px;
+    gap: $space-l;
+    padding: 0 $space-l;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    min-height: 400px;
+    padding: 0 $space-xl;
+  }
+
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: $text-primary;
+    margin: 0;
+
+    @media (min-width: $breakpoint-sm) {
+      font-size: 28px;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      font-size: 32px;
+    }
+  }
+
+  p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: $text-secondary;
+    margin: 0;
+    max-width: 400px;
+
+    @media (min-width: $breakpoint-sm) {
+      font-size: 18px;
+      max-width: 500px;
+    }
+  }
+}
+

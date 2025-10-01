@@ -1,0 +1,73 @@
+@use '@styles/variables.scss' as *;
+
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: $space-xl 0;
+}
+
+.paginationButton {
+    min-width: 38px;
+    height: 42px;
+    padding: 10px;
+    background: transparent;
+    border: 1.5px solid transparent;
+    border-radius: 0;
+    color: #151411;
+    font-family: 'Eudoxus Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.8;
+    text-align: center;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover:not(:disabled):not(.paginationButtonActive) {
+        border-color: #F9F9F9;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+
+    svg {
+        width: 20px;
+        height: 20px;
+        color: #151411;
+    }
+
+    &:disabled svg {
+        color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+.paginationButtonActive {
+    background-color: #518581;
+    border-color: #518581;
+    color: #FFFFFF;
+
+    &:hover {
+        background-color: #518581;
+        border-color: #518581;
+    }
+}
+
+.paginationDots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 42px;
+    color: #151411;
+    font-family: 'Eudoxus Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: center;
+}

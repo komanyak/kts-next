@@ -1,0 +1,60 @@
+@use '@styles/variables.scss' as *;
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.checkboxInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.checkboxCustom {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $checkbox-border;
+  background: $checkbox-bg;
+}
+
+
+.checkbox:not(.checkboxDisabled):hover .checkboxCustom {
+  background: $checkbox-bg-hover;
+  border: 1px solid $checkbox-border-hover;
+}
+
+
+.checkboxDisabled {
+  cursor: not-allowed;
+
+  .checkboxCustom {
+    background: $checkbox-bg-disabled;
+    border: 1px solid rgba(255, 255, 255, 1);
+  }
+
+  &.checkboxChecked .checkboxCustom {
+    background: $checkbox-bg-disabled;
+    border-color: $checkbox-bg-disabled;
+  }
+
+  .checkboxIcon {
+    color: $checkbox-check-disabled;
+  }
+}
+
+.checkboxIcon {
+  flex-shrink: 0;
+}
+
+.checkmark {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

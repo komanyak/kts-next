@@ -1,0 +1,19 @@
+.productsPage {
+  padding: 48px 20px;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  background-color: transparent;
+
+  @media (max-width: 768px) {
+    padding: 48px 16px;
+    gap: 32px;
+  }
+
+  @media (max-width: 375px) {
+    padding: 32px 12px;
+    gap: 24px;
+  }
+}

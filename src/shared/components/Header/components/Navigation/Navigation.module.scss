@@ -1,0 +1,65 @@
+@use '@styles/variables.scss' as *;
+@use '@styles/mixins.scss' as *;
+
+.navigation {
+  @include flex-center;
+  gap: 48px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  @include respond(md) {
+    gap: 32px;
+  }
+  
+  @include respond(sm) {
+    gap: 24px;
+  }
+  
+  @include respond(xs) {
+    gap: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.navLink {
+  cursor: pointer;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  position: relative;
+  padding: $space-s 0;
+  text-decoration: none;
+  
+  &:hover {
+    color: $text-accent;
+  }
+  
+  @include respond(sm) {
+    font-size: 16px;
+  }
+  
+  @include respond(xs) {
+    font-size: 8px;
+  }
+}
+
+.navLinkActive {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: $text-accent;
+    
+    @include respond(sm) {
+      bottom: 0;
+    }
+    
+    @include respond(xs) {
+      display: none;
+    }
+  }
+}
