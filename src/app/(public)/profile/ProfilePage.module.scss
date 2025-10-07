@@ -21,7 +21,7 @@
 .profileContainer {
   width: 100%;
   max-width: 800px;
-  background-color: $card-bg;
+  background-color: var(--card-bg);
   padding: 48px 40px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
   border-radius: 8px;
@@ -102,11 +102,11 @@
 .logoutButton {
   width: 100%;
   background-color: transparent;
-  color: $text-primary;
-  border: 1px solid $text-secondary;
+  color: var(--text-primary);
+  border: 1px solid var(--text-secondary);
 
   &:hover {
-    border-color: $text-primary;
+    border-color: var(--text-primary);
     background-color: rgba(0, 0, 0, 0.05);
   }
 }

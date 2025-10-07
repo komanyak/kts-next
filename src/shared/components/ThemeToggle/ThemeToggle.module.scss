@@ -1,0 +1,60 @@
+@use '@styles/variables.scss' as *;
+
+.themeToggle {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+.toggleTrack {
+  position: relative;
+  width: 48px;
+  height: 26px;
+  background-color: var(--input-bg);
+  border: 2px solid var(--input-border);
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggleThumb {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--brand);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  left: 2px;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  &.dark {
+    left: 24px;
+  }
+}
+

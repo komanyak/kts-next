@@ -3,7 +3,7 @@
 
 .categoriesPage {
   min-height: 100vh;
-  background-color: $page-bg;
+  background-color: var(--page-bg);
   padding: $space-xl 0;
 }
 
@@ -17,7 +17,7 @@
 .title {
   font-size: 32px;
   font-weight: 600;
-  color: $text-primary;
+  color: var(--text-primary);
   margin: 0;
   
   @include respond(sm) {
@@ -31,7 +31,7 @@
 
 .description {
   font-size: 18px;
-  color: $text-secondary;
+  color: var(--text-secondary);
   text-align: center;
   margin: 0;
   

@@ -26,7 +26,7 @@
   text-decoration: none;
   
   &:hover {
-    color: $text-accent;
+    color: var(--text-accent);
   }
 }
 
@@ -38,6 +38,6 @@
     left: 0;
     right: 0;
     height: 2px;
-    background-color: $text-accent;
+    background-color: var(--text-accent);
   }
 }

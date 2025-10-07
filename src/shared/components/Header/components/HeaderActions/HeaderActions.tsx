@@ -2,6 +2,7 @@
 
 import BagIcon from '@icons/BagIcon';
 import UserIcon from '@icons/UserIcon';
+import ThemeToggle from '@components/ThemeToggle';
 import { observer } from 'mobx-react-lite';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -33,6 +34,7 @@ const HeaderActions: React.FC = observer(() => {
 
   return (
     <div className={styles.icons}>
+      <ThemeToggle />
       <button className={styles.iconButton} aria-label="Shopping bag" onClick={handleCartClick}>
         <BagIcon />
         {mounted && cartStore.totalItems > 0 && (

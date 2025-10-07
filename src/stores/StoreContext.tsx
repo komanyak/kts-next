@@ -47,3 +47,8 @@ export const useNavigationStore = () => {
   const { navigationStore } = useStores();
   return navigationStore;
 };
+
+export const useThemeStore = () => {
+  const { themeStore } = useStores();
+  return themeStore;
+};

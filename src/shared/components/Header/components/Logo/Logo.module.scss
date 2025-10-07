@@ -44,7 +44,7 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 22px;
-  color: $text-primary;
+  color: var(--text-primary);
   
   @include respond(sm) {
     font-size: 14px;

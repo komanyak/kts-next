@@ -3,7 +3,7 @@
 .cardSkeleton {
     display: flex;
     flex-direction: column;
-    background-color: $card-bg;
+    background-color: var(--card-bg);
     overflow: hidden;
     width: 360px;
     height: 682px;
@@ -15,7 +15,7 @@
     height: 360px;
     position: relative;
     overflow: hidden;
-    background-color: $card-image-bg;
+    background-color: var(--card-image-bg);
 }
 
 .skeletonBody {

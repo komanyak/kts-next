@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import { StoreProvider } from '@stores/StoreContext';
+import ThemeProvider from '@components/ThemeProvider';
 import '@styles/globals.scss';
 
 const roboto = Roboto({
@@ -31,7 +32,9 @@ export default function RootLayout({
     <html lang="en" className={roboto.className}>
       <body>
         <StoreProvider>
-          {children}
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </StoreProvider>
       </body>
     </html>
