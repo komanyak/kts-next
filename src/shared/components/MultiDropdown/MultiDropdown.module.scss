@@ -5,6 +5,26 @@
   width: 100%;
 }
 
+.arrowIcon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  user-select: none;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+  
+  &:active {
+    opacity: 0.5;
+  }
+}
+
+.arrowIconOpen {
+  transform: rotate(180deg);
+}
+
 .dropdownOptions {
   position: absolute;
   width: 100%;
