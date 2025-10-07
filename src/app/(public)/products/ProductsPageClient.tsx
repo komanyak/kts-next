@@ -27,7 +27,7 @@ const ProductsPageClient: React.FC<ProductsPageClientProps> = observer(({ catego
 
   useEffect(() => {
     productsStore.setNavigate((url: string) => {
-      router.push(url);
+      router.push(url, { scroll: false });
     });
     productsStore.allCategories = categories;
   }, [productsStore, router, categories]);
