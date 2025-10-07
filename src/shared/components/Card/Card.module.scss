@@ -4,7 +4,7 @@
   font-family: Roboto;
   display: flex;
   flex-direction: column;
-  background-color: $card-bg;
+  background-color: var(--card-bg);
   overflow: hidden;
   max-width: 360px;
   box-sizing: border-box;
@@ -19,8 +19,33 @@
   position: relative;
   padding-top: 100%; 
   overflow: hidden;
-  background-color: $card-image-bg;
+  background-color: var(--card-image-bg);
   margin-bottom: $space-xl;
+}
+
+.inCartBadge {
+  position: absolute;
+  top: $space-m;
+  right: $space-m;
+  background-color: var(--text-accent);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  z-index: 2;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  
+  span {
+    color: white !important;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+  }
+  
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .cardBody {
@@ -40,7 +65,7 @@
   font-size: 14px;
   line-height: 18px;
   letter-spacing: 0%;
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 
 .cardTitle {
@@ -49,7 +74,7 @@
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0%;
-  color: $text-primary;
+  color: var(--text-primary);
 }
 
 .cardSubtitle {
@@ -58,7 +83,7 @@
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0%;
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 
 .cardFooter {
@@ -78,7 +103,7 @@
   font-size: 18px;
   line-height: 22px;
   letter-spacing: 0%;
-  color: $text-primary;
+  color: var(--text-primary);
 }
 
 .cardAction {

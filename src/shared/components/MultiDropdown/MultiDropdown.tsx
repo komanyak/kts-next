@@ -59,6 +59,15 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
     onChange(newValue);
   };
 
+  const handleToggleDropdown = () => {
+    if (!disabled) {
+      setIsOpen(!isOpen);
+      if (!isOpen) {
+        setSearch('');
+      }
+    }
+  };
+
   return (
     <div ref={dropdownRef} className={classNames(styles.multiDropdown, className)}>
       <Input
@@ -72,7 +81,15 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
           }
         }}
         disabled={disabled}
-        afterSlot={<ArrowDownIcon width={24} height={24} />}
+        afterSlot={
+          <div 
+            className={classNames(styles.arrowIcon, { [styles.arrowIconOpen]: isOpen })} 
+            onClick={handleToggleDropdown}
+            onMouseDown={(e) => e.preventDefault()}
+          >
+            <ArrowDownIcon width={24} height={24} />
+          </div>
+        }
         {...props}
       />
       {isOpen && !disabled && (

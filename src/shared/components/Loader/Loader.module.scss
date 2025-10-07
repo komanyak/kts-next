@@ -12,7 +12,7 @@
 .loader {
   display: block;
   animation: spin 1s linear infinite;
-  fill: $loader-bg;
+  fill: var(--loader-bg);
 }
 
 .loaderS {

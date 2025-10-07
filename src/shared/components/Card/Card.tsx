@@ -6,7 +6,8 @@ import Text from '../Text';
 
 import styles from './Card.module.scss';
 
-export type CardProps = {
+
+export interface CardProps {
   /** Дополнительный classname */
   className?: string;
   /** URL изображения */
@@ -23,7 +24,11 @@ export type CardProps = {
   onClick?: React.MouseEventHandler;
   /** Слот для действия */
   actionSlot?: React.ReactNode;
-};
+  /** Показать бейдж "В корзине" */
+  inCart?: boolean;
+  /** Количество товара (если указано, показывается вместо "In Cart") */
+  quantity?: number;
+}
 
 const Card: React.FC<CardProps> = ({
   className,
@@ -34,6 +39,8 @@ const Card: React.FC<CardProps> = ({
   contentSlot,
   onClick,
   actionSlot,
+  inCart = false,
+  quantity,
 }) => {
   return (
     <div className={classNames(styles.card, className)} onClick={onClick}>
@@ -46,6 +53,13 @@ const Card: React.FC<CardProps> = ({
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
           style={{ objectFit: 'cover' }}
         />
+        {(inCart || quantity) && (
+          <div className={styles.inCartBadge}>
+            <Text view="p-14" weight="medium">
+              {quantity ? `×${quantity}` : 'In Cart'}
+            </Text>
+          </div>
+        )}
       </div>
 
       {/* Контент карточки */}
@@ -55,7 +69,7 @@ const Card: React.FC<CardProps> = ({
             {captionSlot}
           </Text>
         )}
-        <Text view="p-20" color="primary" weight="medium" maxLines={2} className={styles.cardTitle}>
+        <Text view="p-20" color="primary" weight="medium" maxLines={1} className={styles.cardTitle}>
           {title}
         </Text>
         <Text

@@ -3,14 +3,14 @@
     height: 24px;
   
     &.primary {
-      color: #000000;
+      color: var(--text-primary);
     }
   
     &.secondary {
-      color: #afadb5;
+      color: var(--text-secondary);
     }
   
     &.accent {
-      color: #518581;
+      color: var(--text-accent);
     }
   } 

@@ -66,13 +66,13 @@
 }
 
 .textColorPrimary {
-  color: $text-primary;
+  color: var(--text-primary);
 }
 
 .textColorSecondary {
-  color: $text-secondary;
+  color: var(--text-secondary);
 }
 
 .textColorAccent {
-  color: $text-accent;
+  color: var(--text-accent);
 }

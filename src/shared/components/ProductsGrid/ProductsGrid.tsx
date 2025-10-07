@@ -4,8 +4,10 @@ import type { Product } from '@api/types';
 import Button from '@components/Button';
 import Card from '@components/Card';
 import ProductsGridSkeleton from '@components/ProductsGridSkeleton';
-import React, { useCallback, memo } from 'react';
+import React, { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import { useCartStore } from '@stores/StoreContext';
+import { observer } from 'mobx-react-lite';
 
 import styles from './ProductsGrid.module.scss';
 
@@ -18,9 +20,10 @@ export type ProductsGridProps = {
   showAddToCart?: boolean;
   onProductClick?: (productId: string) => void;
   buttonText?: string;
+  getQuantity?: (product: Product) => number;
 };
 
-const ProductsGrid: React.FC<ProductsGridProps> = ({
+const ProductsGrid: React.FC<ProductsGridProps> = observer(({
   products,
   loading = false,
   getImageUrl,
@@ -29,8 +32,10 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({
   showAddToCart = true,
   onProductClick,
   buttonText = 'Add to Cart',
+  getQuantity,
 }) => {
   const router = useRouter();
+  const cartStore = useCartStore();
 
   const handleProductClick = useCallback(
     (productId: string) => {
@@ -59,33 +64,40 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({
 
   return (
     <div className={styles.productsGrid}>
-      {products.map((product) => (
-        <div
-          key={product.documentId}
-          className={styles.productCard}
-          onClick={() => handleProductClick(product.documentId)}
-        >
-          <Card
-            image={getImageUrl(product)}
-            captionSlot={product.productCategory.title || ''}
-            title={product.title}
-            subtitle={product.description}
-            contentSlot={formatPrice(product.price)}
-            actionSlot={
-              showAddToCart && onAddToCart ? (
-                <Button
-                  className={styles.addToCartButton}
-                  onClick={(event) => handleAddToCart(product, event)}
-                >
-                  {buttonText}
-                </Button>
-              ) : null
-            }
-          />
-        </div>
-      ))}
+      {products.map((product) => {
+        const isInCart = cartStore.isInCart(product.id);
+        const quantity = getQuantity ? getQuantity(product) : undefined;
+        
+        return (
+          <div
+            key={product.documentId}
+            className={styles.productCard}
+            onClick={() => handleProductClick(product.documentId)}
+          >
+            <Card
+              image={getImageUrl(product)}
+              captionSlot={product.productCategory.title || ''}
+              title={product.title}
+              subtitle={product.description}
+              contentSlot={formatPrice(product.price)}
+              inCart={!quantity && isInCart}
+              quantity={quantity}
+              actionSlot={
+                showAddToCart && onAddToCart ? (
+                  <Button
+                    className={styles.addToCartButton}
+                    onClick={(event) => handleAddToCart(product, event)}
+                  >
+                    {buttonText}
+                  </Button>
+                ) : null
+              }
+            />
+          </div>
+        );
+      })}
     </div>
   );
-};
+});
 
-export default memo(ProductsGrid);
+export default ProductsGrid;

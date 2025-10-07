@@ -3,20 +3,20 @@
 .inputWrapper {
   display: flex;
   align-items: center;
-  background: $input-bg;
+  background: var(--input-bg);
   height: 52px;
-  border: 1px solid $input-border;
+  border: 1px solid var(--input-border);
   gap: $space-xxs;
   padding: $space-s $space-xs;
   justify-content: space-between;
 
   &:focus-within {
-    border: 1px solid $brand;
+    border: 1px solid var(--brand);
   }
 
   &:has(.inputField:disabled) {
-    background: $input-bg-disabled;
-    border: 1px solid $input-border-disabled;
+    background: var(--input-bg-disabled);
+    border: 1px solid var(--input-border-disabled);
   }
 }
 
@@ -26,7 +26,7 @@
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0%;
-  color: $input-placeholder;
+  color: var(--input-placeholder);
 }
 
 .inputField {
@@ -36,6 +36,11 @@
   outline: none;
   background: transparent;
   font-size: 16px;
+  color: var(--input-text);
+  
+  &:disabled {
+    color: var(--input-text-disabled);
+  }
 }
 
 .inputIcon {

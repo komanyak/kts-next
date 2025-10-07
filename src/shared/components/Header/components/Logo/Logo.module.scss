@@ -12,12 +12,14 @@
   }
   
   @include respond(sm) {
-    left: $space-s;
+    left: 50%;
+    transform: translateX(-50%);
     gap: $space-xxs;
   }
   
   @include respond(xs) {
-    left: 8px;
+    left: 50%;
+    transform: translateX(-50%);
     gap: 3px;
   }
 }
@@ -42,7 +44,7 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 22px;
-  color: $text-primary;
+  color: var(--text-primary);
   
   @include respond(sm) {
     font-size: 14px;

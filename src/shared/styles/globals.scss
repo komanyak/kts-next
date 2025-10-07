@@ -1,5 +1,52 @@
 @use 'variables.scss' as *;
 
+:root {
+  --page-bg: #{$page-bg};
+  --loader-bg: #{$loader-bg};
+  --button-primary-bg: #{$button-primary-bg};
+  --button-primary-text: #{$button-primary-text};
+  --button-primary-bg-hover: #{$button-primary-bg-hover};
+  --button-primary-text-hover: #{$button-primary-text-hover};
+  --button-primary-bg-disabled: #{$button-primary-bg-disabled};
+  --button-primary-text-disabled: #{$button-primary-text-disabled};
+  --button-primary-bg-active: #{$button-primary-bg-active};
+  --button-primary-text-active: #{$button-primary-text-active};
+  --text-primary: #{$text-primary};
+  --text-secondary: #{$text-secondary};
+  --text-accent: #{$text-accent};
+  --input-text: #{$input-text};
+  --input-bg: #{$input-bg};
+  --input-placeholder: #{$input-placeholder};
+  --input-border: #{$input-border};
+  --input-bg-focus: #{$input-bg-focus};
+  --input-border-focus: #{$input-border-focus};
+  --input-text-focus: #{$input-text-focus};
+  --input-bg-disabled: #{$input-bg-disabled};
+  --input-border-disabled: #{$input-border-disabled};
+  --input-text-disabled: #{$input-text-disabled};
+  --checkbox-bg: #{$checkbox-bg};
+  --checkbox-border: #{$checkbox-border};
+  --checkbox-bg-hover: #{$checkbox-bg-hover};
+  --checkbox-border-hover: #{$checkbox-border-hover};
+  --checkbox-bg-disabled: #{$checkbox-bg-disabled};
+  --checkbox-border-disabled: #{$checkbox-border-disabled};
+  --checkbox-check: #{$checkbox-check};
+  --checkbox-check-hover: #{$checkbox-check-hover};
+  --checkbox-check-disabled: #{$checkbox-check-disabled};
+  --card-image-bg: #{$card-image-bg};
+  --card-bg: #{$card-bg};
+  --dropdown-options-bg: #{$dropdown-options-bg};
+  --brand: #{$brand};
+  --brand-active: #{$brand-active};
+  --brand-hover: #{$brand-hover};
+  --header-bg: #{$header-bg};
+  --header-border: #{$header-border};
+  --logo-brown: #{$logo-brown};
+  --logo-light-green: #{$logo-light-green};
+  
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -16,10 +63,13 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $page-bg;
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #__next {
   min-height: 100vh;
-  background-color: $page-bg;
+  background-color: var(--page-bg);
+  transition: background-color 0.3s ease;
 }
