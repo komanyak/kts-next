@@ -77,7 +77,7 @@ const ProductsPageClient: React.FC<ProductsPageClientProps> = observer(({ catego
         products={productsStore.paginatedProducts}
         loading={productsStore.loading}
         getImageUrl={(product) => getProductImageUrl(product, 'medium')}
-        formatPrice={(price) => formatPrice(price)}
+        formatPrice={(price, discount) => formatPrice(price, discount)}
         onAddToCart={(product) => cartStore.addToCart(product)}
       />
 

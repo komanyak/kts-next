@@ -82,7 +82,7 @@ const CartPageClient: React.FC = observer(() => {
         products={cartProducts}
         loading={cartStore.loading}
         getImageUrl={(product) => getProductImageUrl(product, 'medium')}
-        formatPrice={(price) => formatPrice(price)}
+        formatPrice={(price, discount) => formatPrice(price, discount)}
         onAddToCart={handleRemoveFromCart}
         showAddToCart={true}
         buttonText="Remove from Cart"

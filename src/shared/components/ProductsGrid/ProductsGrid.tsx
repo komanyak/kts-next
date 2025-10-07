@@ -4,7 +4,7 @@ import type { Product } from '@api/types';
 import Button from '@components/Button';
 import Card from '@components/Card';
 import ProductsGridSkeleton from '@components/ProductsGridSkeleton';
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@stores/StoreContext';
 import { observer } from 'mobx-react-lite';
@@ -15,7 +15,7 @@ export type ProductsGridProps = {
   products: Product[];
   loading?: boolean;
   getImageUrl: (product: Product) => string;
-  formatPrice: (price: number) => string;
+  formatPrice: (price: number, discountPercent?: number) => string;
   onAddToCart?: (product: Product) => void;
   showAddToCart?: boolean;
   onProductClick?: (productId: string) => void;
@@ -36,6 +36,11 @@ const ProductsGrid: React.FC<ProductsGridProps> = observer(({
 }) => {
   const router = useRouter();
   const cartStore = useCartStore();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleProductClick = useCallback(
     (productId: string) => {
@@ -65,8 +70,10 @@ const ProductsGrid: React.FC<ProductsGridProps> = observer(({
   return (
     <div className={styles.productsGrid}>
       {products.map((product) => {
-        const isInCart = cartStore.isInCart(product.id);
-        const quantity = getQuantity ? getQuantity(product) : undefined;
+        // Показываем индикаторы корзины только после монтирования на клиенте
+        // Это предотвращает ошибки гидрации, т.к. на сервере корзина всегда пустая
+        const isInCart = mounted ? cartStore.isInCart(product.id) : false;
+        const quantity = mounted && getQuantity ? getQuantity(product) : undefined;
         
         return (
           <div
@@ -79,7 +86,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = observer(({
               captionSlot={product.productCategory.title || ''}
               title={product.title}
               subtitle={product.description}
-              contentSlot={formatPrice(product.price)}
+              contentSlot={formatPrice(product.price, product.discountPercent)}
               inCart={!quantity && isInCart}
               quantity={quantity}
               actionSlot={
