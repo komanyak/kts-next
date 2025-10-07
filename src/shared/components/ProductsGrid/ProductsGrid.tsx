@@ -4,7 +4,7 @@ import type { Product } from '@api/types';
 import Button from '@components/Button';
 import Card from '@components/Card';
 import ProductsGridSkeleton from '@components/ProductsGridSkeleton';
-import React, { useCallback, memo } from 'react';
+import React, { useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@stores/StoreContext';
 import { observer } from 'mobx-react-lite';
@@ -20,6 +20,7 @@ export type ProductsGridProps = {
   showAddToCart?: boolean;
   onProductClick?: (productId: string) => void;
   buttonText?: string;
+  getQuantity?: (product: Product) => number;
 };
 
 const ProductsGrid: React.FC<ProductsGridProps> = observer(({
@@ -31,6 +32,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = observer(({
   showAddToCart = true,
   onProductClick,
   buttonText = 'Add to Cart',
+  getQuantity,
 }) => {
   const router = useRouter();
   const cartStore = useCartStore();
@@ -64,6 +66,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = observer(({
     <div className={styles.productsGrid}>
       {products.map((product) => {
         const isInCart = cartStore.isInCart(product.id);
+        const quantity = getQuantity ? getQuantity(product) : undefined;
         
         return (
           <div
@@ -77,7 +80,8 @@ const ProductsGrid: React.FC<ProductsGridProps> = observer(({
               title={product.title}
               subtitle={product.description}
               contentSlot={formatPrice(product.price)}
-              inCart={isInCart}
+              inCart={!quantity && isInCart}
+              quantity={quantity}
               actionSlot={
                 showAddToCart && onAddToCart ? (
                   <Button

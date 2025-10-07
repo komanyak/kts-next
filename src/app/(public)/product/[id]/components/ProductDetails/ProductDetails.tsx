@@ -82,7 +82,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = observer(({ product }) => 
             </Text>
             {isInCart && (
               <div className={styles.inCartIndicator}>
-                <CheckIcon width={20} height={20} color="#518581" />
+                <CheckIcon width={20} height={20} color="accent" />
                 <Text view="p-16" color="accent" weight="medium">
                   In Cart ({cartQuantity})
                 </Text>
