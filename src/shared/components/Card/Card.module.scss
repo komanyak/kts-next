@@ -23,6 +23,22 @@
   margin-bottom: $space-xl;
 }
 
+.inCartBadge {
+  position: absolute;
+  top: $space-m;
+  right: $space-m;
+  background-color: $text-accent;
+  color: white;
+  padding: $space-xxs $space-m;
+  border-radius: 4px;
+  z-index: 2;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  
+  span {
+    color: white !important;
+  }
+}
+
 .cardBody {
   font-family: Roboto;
   box-sizing: border-box;

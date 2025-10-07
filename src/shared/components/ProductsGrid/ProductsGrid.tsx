@@ -6,6 +6,8 @@ import Card from '@components/Card';
 import ProductsGridSkeleton from '@components/ProductsGridSkeleton';
 import React, { useCallback, memo } from 'react';
 import { useRouter } from 'next/navigation';
+import { useCartStore } from '@stores/StoreContext';
+import { observer } from 'mobx-react-lite';
 
 import styles from './ProductsGrid.module.scss';
 
@@ -20,7 +22,7 @@ export type ProductsGridProps = {
   buttonText?: string;
 };
 
-const ProductsGrid: React.FC<ProductsGridProps> = ({
+const ProductsGrid: React.FC<ProductsGridProps> = observer(({
   products,
   loading = false,
   getImageUrl,
@@ -31,6 +33,7 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({
   buttonText = 'Add to Cart',
 }) => {
   const router = useRouter();
+  const cartStore = useCartStore();
 
   const handleProductClick = useCallback(
     (productId: string) => {
@@ -59,33 +62,38 @@ const ProductsGrid: React.FC<ProductsGridProps> = ({
 
   return (
     <div className={styles.productsGrid}>
-      {products.map((product) => (
-        <div
-          key={product.documentId}
-          className={styles.productCard}
-          onClick={() => handleProductClick(product.documentId)}
-        >
-          <Card
-            image={getImageUrl(product)}
-            captionSlot={product.productCategory.title || ''}
-            title={product.title}
-            subtitle={product.description}
-            contentSlot={formatPrice(product.price)}
-            actionSlot={
-              showAddToCart && onAddToCart ? (
-                <Button
-                  className={styles.addToCartButton}
-                  onClick={(event) => handleAddToCart(product, event)}
-                >
-                  {buttonText}
-                </Button>
-              ) : null
-            }
-          />
-        </div>
-      ))}
+      {products.map((product) => {
+        const isInCart = cartStore.isInCart(product.id);
+        
+        return (
+          <div
+            key={product.documentId}
+            className={styles.productCard}
+            onClick={() => handleProductClick(product.documentId)}
+          >
+            <Card
+              image={getImageUrl(product)}
+              captionSlot={product.productCategory.title || ''}
+              title={product.title}
+              subtitle={product.description}
+              contentSlot={formatPrice(product.price)}
+              inCart={isInCart}
+              actionSlot={
+                showAddToCart && onAddToCart ? (
+                  <Button
+                    className={styles.addToCartButton}
+                    onClick={(event) => handleAddToCart(product, event)}
+                  >
+                    {buttonText}
+                  </Button>
+                ) : null
+              }
+            />
+          </div>
+        );
+      })}
     </div>
   );
-};
+});
 
-export default memo(ProductsGrid);
+export default ProductsGrid;

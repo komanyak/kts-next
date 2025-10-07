@@ -258,6 +258,20 @@
   }
 }
 
+.inCartIndicator {
+  display: flex;
+  align-items: center;
+  gap: $space-xxs;
+  padding: $space-xxs $space-m;
+  background-color: rgba(81, 133, 129, 0.1);
+  border-radius: 4px;
+  width: fit-content;
+  
+  svg {
+    flex-shrink: 0;
+  }
+}
+
 .actionButtons {
   display: flex;
   flex-direction: column;

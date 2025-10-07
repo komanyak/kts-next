@@ -23,6 +23,8 @@ export type CardProps = {
   onClick?: React.MouseEventHandler;
   /** Слот для действия */
   actionSlot?: React.ReactNode;
+  /** Показать бейдж "В корзине" */
+  inCart?: boolean;
 };
 
 const Card: React.FC<CardProps> = ({
@@ -34,6 +36,7 @@ const Card: React.FC<CardProps> = ({
   contentSlot,
   onClick,
   actionSlot,
+  inCart = false,
 }) => {
   return (
     <div className={classNames(styles.card, className)} onClick={onClick}>
@@ -46,6 +49,13 @@ const Card: React.FC<CardProps> = ({
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
           style={{ objectFit: 'cover' }}
         />
+        {inCart && (
+          <div className={styles.inCartBadge}>
+            <Text view="p-14" weight="medium">
+              In Cart
+            </Text>
+          </div>
+        )}
       </div>
 
       {/* Контент карточки */}
