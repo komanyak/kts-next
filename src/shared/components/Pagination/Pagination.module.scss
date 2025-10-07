@@ -16,7 +16,7 @@
     background: transparent;
     border: 1.5px solid transparent;
     border-radius: 0;
-    color: #151411;
+    color: var(--text-primary);
     font-family: 'Eudoxus Sans', sans-serif;
     font-size: 18px;
     font-weight: 500;
@@ -29,32 +29,33 @@
     justify-content: center;
 
     &:hover:not(:disabled):not(.paginationButtonActive) {
-        border-color: #F9F9F9;
+        border-color: var(--header-border);
     }
 
     &:disabled {
         cursor: not-allowed;
+        opacity: 0.4;
     }
 
     svg {
         width: 20px;
         height: 20px;
-        color: #151411;
+        color: var(--text-primary);
     }
 
     &:disabled svg {
-        color: rgba(0, 0, 0, 0.3);
+        color: var(--text-secondary);
     }
 }
 
 .paginationButtonActive {
-    background-color: #518581;
-    border-color: #518581;
-    color: #FFFFFF;
+    background-color: var(--brand);
+    border-color: var(--brand);
+    color: var(--button-primary-text);
 
     &:hover {
-        background-color: #518581;
-        border-color: #518581;
+        background-color: var(--brand);
+        border-color: var(--brand);
     }
 }
 
@@ -64,7 +65,7 @@
     justify-content: center;
     min-width: 38px;
     height: 42px;
-    color: #151411;
+    color: var(--text-primary);
     font-family: 'Eudoxus Sans', sans-serif;
     font-size: 18px;
     font-weight: 500;

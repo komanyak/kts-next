@@ -69,7 +69,7 @@ const Card: React.FC<CardProps> = ({
             {captionSlot}
           </Text>
         )}
-        <Text view="p-20" color="primary" weight="medium" maxLines={2} className={styles.cardTitle}>
+        <Text view="p-20" color="primary" weight="medium" maxLines={1} className={styles.cardTitle}>
           {title}
         </Text>
         <Text
