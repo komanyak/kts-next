@@ -1,0 +1,113 @@
+@use '@styles/variables.scss' as *;
+@use '@styles/mixins.scss' as *;
+
+.profilePage {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  min-height: calc(100vh - 90px);
+
+  @include respond(sm) {
+    padding: 30px 16px;
+    min-height: calc(100vh - 80px);
+  }
+
+  @include respond(xs) {
+    padding: 20px 12px;
+    min-height: calc(100vh - 50px);
+  }
+}
+
+.profileContainer {
+  width: 100%;
+  max-width: 800px;
+  background-color: $card-bg;
+  padding: 48px 40px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+
+  @include respond(sm) {
+    padding: 36px 28px;
+  }
+
+  @include respond(xs) {
+    padding: 24px 20px;
+    box-shadow: none;
+  }
+}
+
+.profileHeader {
+  margin-bottom: 40px;
+  text-align: center;
+
+  @include respond(sm) {
+    margin-bottom: 32px;
+  }
+
+  @include respond(xs) {
+    margin-bottom: 24px;
+  }
+}
+
+.title {
+  margin: 0;
+  font-size: 36px;
+
+  @include respond(sm) {
+    font-size: 32px;
+  }
+
+  @include respond(xs) {
+    font-size: 28px;
+  }
+}
+
+.profileContent {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: $space-l;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xxs;
+  padding: $space-m 0;
+  border-bottom: 1px solid #f3f3f3;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.statusBadge {
+  display: inline-flex;
+  width: fit-content;
+}
+
+.actionsSection {
+  display: flex;
+  flex-direction: column;
+  gap: $space-m;
+  padding-top: $space-l;
+  border-top: 2px solid #f3f3f3;
+}
+
+.logoutButton {
+  width: 100%;
+  background-color: transparent;
+  color: $text-primary;
+  border: 1px solid $text-secondary;
+
+  &:hover {
+    border-color: $text-primary;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+

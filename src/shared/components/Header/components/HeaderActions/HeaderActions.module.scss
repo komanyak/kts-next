@@ -85,3 +85,29 @@
     right: -5px;
   }
 }
+
+.authBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: $text-accent;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  border: 2px solid $header-bg;
+  
+  @include respond(sm) {
+    width: 8px;
+    height: 8px;
+    top: -3px;
+    right: -3px;
+  }
+  
+  @include respond(xs) {
+    width: 6px;
+    height: 6px;
+    border-width: 1px;
+    top: -2px;
+    right: -2px;
+  }
+}

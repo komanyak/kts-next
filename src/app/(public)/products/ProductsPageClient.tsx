@@ -53,7 +53,7 @@ const ProductsPageClient: React.FC<ProductsPageClientProps> = observer(({ catego
     };
 
     initializeStore();
-  }, []);
+  }, []); 
 
   if (productsStore.error) {
     return <ErrorState error={productsStore.error} />;

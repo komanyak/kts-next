@@ -23,6 +23,11 @@ export const useStores = (): RootStore => {
   return store;
 };
 
+export const useAuthStore = () => {
+  const { authStore } = useStores();
+  return authStore;
+};
+
 export const useProductsStore = () => {
   const { productsStore } = useStores();
   return productsStore;
