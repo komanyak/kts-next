@@ -13,13 +13,7 @@
   }
   
   @include respond(sm) {
-    gap: 24px;
-  }
-  
-  @include respond(xs) {
-    gap: 8px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: none;
   }
 }
 
@@ -34,14 +28,6 @@
   &:hover {
     color: $text-accent;
   }
-  
-  @include respond(sm) {
-    font-size: 16px;
-  }
-  
-  @include respond(xs) {
-    font-size: 8px;
-  }
 }
 
 .navLinkActive {
@@ -53,13 +39,5 @@
     right: 0;
     height: 2px;
     background-color: $text-accent;
-    
-    @include respond(sm) {
-      bottom: 0;
-    }
-    
-    @include respond(xs) {
-      display: none;
-    }
   }
 }
